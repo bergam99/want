@@ -1,0 +1,39 @@
+.Button__disabled {
+    cursor:not-allowed;
+}
+
+.Button__primary {
+    display: flex;
+    background-color: white;
+    color: black;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--sp-13);
+    border-radius: 12px;
+    border: 1px solid;
+    text-align: center;
+}
+
+.Button__primary.Button__disabled {
+    background-color: var(--cl-grey);
+    border: 1px solid white;
+    color: white;
+}
+
+
+.Button__inverted {
+    display: flex;
+    background-color: black;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--sp-13);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.Button__inverted.Button__disabled {
+    background-color: var(--cl-grey);
+}

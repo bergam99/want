@@ -1,0 +1,35 @@
+.Map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.Map__research.Button {
+  position: fixed;
+  top: 62px;
+  z-index: 991;
+  padding: 6px 14px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.Map__research.Button:hover{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    color: black;
+}
+
+.Map__research {
+  transition: opacity 0.4s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.Map__research.show {
+  opacity: 1;
+  pointer-events: auto;
+}

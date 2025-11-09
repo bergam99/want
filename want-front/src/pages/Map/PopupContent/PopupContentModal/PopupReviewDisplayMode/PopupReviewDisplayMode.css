@@ -1,0 +1,194 @@
+.PopupReviewDisplayMode {
+    display: flex;
+    gap: 70px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.PopupReviewDisplayMode__averageContainer {
+    width: 35%;
+    height: 35%;
+    transition: height 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PopupReviewDisplayMode__scrollableContainer {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.PopupReviewDisplayMode__chartContainer {
+    width: 100%;
+    max-width: 400px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    background: var(--cl-grey);
+    border-radius: 4px;
+    transition: margin-bottom 0.3s ease;
+}
+
+.bar {
+    height: 5px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
+}
+
+.PopupReviewDisplayMode__totalReviewNb {
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.PopupReviewDisplayMode__noReview {
+    font-size: 14px;
+}
+
+.PopupReviewDisplayMode__Write {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    background-color: black;
+    border-radius: 50%;
+    width: 50px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.PopupReviewDisplayMode__reviewItem {
+    margin-bottom: 46px;
+}
+
+
+.PopupReviewDisplayMode__Write svg {
+    width: 22px;
+}
+
+.PopupReviewDisplayMode__averageRating {
+    font-size: 64px;
+    padding-bottom: 10px;
+    transition: font-size 0.3s ease;
+}
+
+
+
+.PopupReviewDisplayMode__successMsg {
+    background-color: black;
+    color: white;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    margin-bottom: 40px;
+    font-weight: 300;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.PopupReviewDisplayMode__successMsg.fadeIn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.PopupReviewDisplayMode__successMsg.fadeOut {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.PopupReviewDisplayMode__err {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    height: 85%;
+}
+
+.PopupReviewDisplayMode__errMsg {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.PopupReviewDisplayMode__errBtn {
+    max-width: 300px;
+}
+
+.PopupReviewDisplayMode__sortButtons{
+    margin-bottom: 32px;
+    display: flex;
+    gap: 6px;
+}
+.PopupReviewDisplayMode__sortButtons {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .PopupReviewDisplayMode {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 0;
+
+    }
+
+    .PopupReviewDisplayMode__averageRating {
+        padding-bottom: 0;
+    }
+
+    .PopupReviewDisplayMode__totalReviewNb {
+        margin: 14px 0 20px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .PopupReviewDisplayMode__chartContainer {
+        width: 50%;
+        transition: width 0.3s ease;
+    }
+
+    .PopupReviewDisplayMode__averageContainer {
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+        width: 100%;
+        transition: height 0.3s ease, gap 0.3s ease;
+        overflow: hidden;
+        padding-bottom: 10px;
+        border-bottom: 1px solid;
+        /* default height */
+        height: 20%;
+    }
+
+    /* SHRINK */
+    .PopupReviewDisplayMode__averageContainer.shrink {
+        height: 13%;
+        gap: 30px;
+    }
+
+    .PopupReviewDisplayMode__averageContainer.shrink .PopupReviewDisplayMode__averageRating {
+        font-size: 40px;
+    }
+
+    .PopupReviewDisplayMode__averageContainer.shrink .bar-row {
+        margin-bottom: 6px;
+    }
+
+    .PopupReviewDisplayMode__averageContainer.shrink .PopupReviewDisplayMode__chartContainer {
+        width: 46%;
+    }
+}

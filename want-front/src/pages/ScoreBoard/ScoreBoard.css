@@ -1,0 +1,57 @@
+.ScoreBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.ScoreBoard__title {
+    font-size: 40px;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.ScoreBoard__li {
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 10px;
+    margin-block: 8px;
+    font-weight: 300;
+}
+
+/*  */
+.ScoreBoard__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+}
+
+.ScoreBoard__table th,
+.ScoreBoard__table {
+    font-weight: 300;
+}
+
+.ScoreBoard__table th{
+    border-bottom: 1px solid var(--cl-lgrey);
+    font-size: 14px;
+}
+.ScoreBoard__table th,
+.ScoreBoard__table td {
+    padding: 8px 12px;
+    text-align: center;
+}
+
+tr:first-child {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+tr:first-child td:nth-child(2):after {
+    content: "🔥";
+}
+
+.ScoreBoard__table th {
+    color: black;
+}

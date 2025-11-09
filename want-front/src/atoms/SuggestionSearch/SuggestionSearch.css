@@ -1,0 +1,114 @@
+.SuggestionSearch__large .SuggestionSearch__input {
+    color: white;
+    width: 100px;
+}
+
+
+.SuggestionSearch__medium .SuggestionSearch__input {
+    font-size: 14px;
+    padding: 4px 0;
+    width: 86px;
+}
+
+.SuggestionSearch__input {
+    text-align: center;
+    padding: 8px;
+    font-size: var(--fs-16);
+    border: 1px solid;
+    appearance: none;
+    background: transparent;
+}
+
+.SuggestionSearch__large {
+    gap: 20px;
+}
+
+.SuggestionSearch__medium {
+    gap: 10px;
+}
+
+.SuggestionSearch__large,
+.SuggestionSearch__medium {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.CustomSelector__medium label {
+    font-size: 16px;
+}
+
+.CustomSelector__medium .SuggestionSearch__input {
+    font-size: 14px;
+    padding-block: 4px;
+}
+
+.SuggestionSearch__medium .SuggestionSearch__label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: black;
+}
+
+.SuggestionSearch__large .SuggestionSearch__label {
+    font-size: 54px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.SuggestionSearch__large .SuggestionSearch__input {
+    font-size: 18px;
+}
+
+.SuggestionSearch__input:focus {
+    border-color: none;
+    outline: none;
+}
+
+.SuggestionSearch__large li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.SuggestionSearch__large li:not(:last-child){
+    border-bottom: 1px solid white;
+}
+
+.SuggestionSearch__medium li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.SuggestionSearch__medium li:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+.SuggestionSearch__medium .SuggestionSearch__dropdown li {
+    padding: 5px;
+    color: black;
+    font-size: 14px;
+
+}
+
+.SuggestionSearch__dropdown li:hover {
+    color: var(--cl-red);
+}
+
+.SuggestionSearch__dropdown {
+    position: absolute;
+    top: 80%;
+    width: 116px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 10;
+}
+
+
+.SuggestionSearch__medium .SuggestionSearch__dropdown {
+    z-index: 992;
+    background: white;
+    border: 1px solid black;
+    width: 86px;
+    top: 97%;
+}

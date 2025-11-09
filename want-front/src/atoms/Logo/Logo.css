@@ -1,0 +1,33 @@
+.Logo__noPadding {
+    padding: 0 !important;
+}
+
+.Logo__white {
+    color: white;
+}
+
+.Logo__blue {
+    color: var(--cl-red);
+}
+
+
+.Logo__xsmall {
+    font-size: var(--fs-10);
+    padding: var(--sp-8);
+    /* font-weight: bold; */
+}
+
+.Logo__small {
+    font-size: var(--fs-16);
+    /* font-weight: bold; */
+}
+
+.Logo__medium {
+    font-size: 22px;
+    padding: var(--sp-8);
+    font-weight: 200;
+}
+
+.Logo{
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -1,0 +1,18 @@
+.Dashboard {
+    width: 100%;
+}
+
+.Dashboard__container:not(:last-child) {
+    padding-bottom: 74px;
+}
+
+.Dashboard__reviewContainer {
+    padding-block: 30px;
+}
+
+@media (min-width: 768px) {
+    .Dashboard {
+        width: 97%;
+        margin-inline: auto;
+    }
+}

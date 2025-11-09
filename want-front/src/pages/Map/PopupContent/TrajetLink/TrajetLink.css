@@ -1,0 +1,15 @@
+.TrajetLink {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.TrajetLink__link {
+    font-size: 13px;
+}
+
+.TrajetLink__linkWrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

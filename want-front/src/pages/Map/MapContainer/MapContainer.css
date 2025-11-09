@@ -1,0 +1,122 @@
+.MapContainer__Map {
+    position: relative;
+    height: 100%;
+    width: var(--max-width);
+    border-radius: 12px;
+    border: 1px solid;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+@media (min-width: 425px) {
+    .MapContainer__Map {
+        margin-bottom: 0px;
+    }
+}
+
+/* leaflet */
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: black;
+    padding: 8px 12px 0 0;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.MapContainer__mapIcon {
+    width: var(--sp-16);
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+}
+
+.leaflet-control-zoom,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-touch .leaflet-bar a:first-child,
+.leaflet-touch .leaflet-bar a:last-child {
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    position: relative;
+}
+
+.leaflet-control span {
+    font: var(--fs-16) Helvetica, Arial, sans-serif;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.leaflet-top {
+    top: 1px;
+
+}
+
+.leaflet-left .leaflet-control {
+    left: -1px;
+}
+
+@media (max-width: 768px) {
+    .leaflet-control-zoom {
+        display: block;
+    }
+
+    .leaflet-top {
+        top: auto;
+        bottom: 7px;
+    }
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+    background-color: black !important;
+    color: white !important;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 500;
+}
+
+.leaflet-top,
+.leaflet-left,
+.leaflet-bottom,
+.leaflet-right {
+    z-index: 500;
+}
+
+.leaflet-popup-content p {
+    margin: 0;
+}
+
+/* leaflet init */
+.leaflet-container a {
+    color: black;
+}
+
+.leaflet-container a:hover {
+    color: var(--cl-red);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.17);
+    border: 1px solid;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
+}
+
+/* cluster */
+.custom-cluster-icon {
+    background-color: black;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 33px;
+}

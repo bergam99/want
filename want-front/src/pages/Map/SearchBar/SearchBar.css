@@ -1,0 +1,19 @@
+.SearchBar{
+    margin: var(--sp-13);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-10);
+    width: var(--max-width);
+    justify-content: left;
+ 
+}
+
+.SearchBar__button:hover{
+    color: var(--cl-red);
+}
+
+@media (min-width: 768px) {
+    .SearchBar {
+        justify-content: center;
+    }
+}

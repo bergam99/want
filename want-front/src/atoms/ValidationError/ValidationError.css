@@ -1,0 +1,5 @@
+.ValidationError {
+    color: var(--cl-red);
+    font-size: 12px;
+    margin-top: 4px;
+}

@@ -1,0 +1,15 @@
+.DescriptionBox {
+    font-size: var(--fs-14);
+    border: 1px solid black;
+    border-radius: 14px;
+    padding: var(--sp-4) var(--sp-8);
+    width: fit-content;
+    background-color: white;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.DescriptionBox__inverted {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}

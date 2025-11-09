@@ -1,0 +1,20 @@
+.PopupContent {
+    display: flex;
+    gap: 10px;
+    font-size: var(--fs-16);
+    flex-direction: column;
+    color: black;
+    padding-block: 10px;
+}
+
+.PopupContent__title {
+    text-align: center;
+    padding-bottom: 6px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.PopupContent__button2 {
+    margin-block: 0;
+    font-size: 14px;
+}

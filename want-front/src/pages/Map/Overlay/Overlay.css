@@ -1,0 +1,28 @@
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Overlay__layer {
+    transition: opacity 0.3s ease-in-out;
+    color: white;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-13);
+}
+
+.Overlay__arrow:hover{
+    color: var(--cl-red);
+}
+
+.Overlay__arrow svg{
+    width: 22px;
+}

@@ -1,0 +1,100 @@
+.PopupReviewWriteMode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+}
+
+.PopupReviewWriteMode__reviewFormTitle {
+    font-size: 36px;
+    padding-bottom: 24px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.PopupReviewWriteMode__reviewFormButtonContainer {
+    display: flex;
+    width: 42%;
+    gap: 35px;
+}
+
+.PopupReviewWriteMode__reviewFormInput {
+    padding: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.PopupReviewWriteMode__reviewFormInput textarea {
+    border: 1px solid var(--cl-grey);
+    border-radius: 14px;
+    height: 150px;
+    padding: 18px;
+    font-weight: 200;
+}
+
+.PopupReviewWriteMode__reviewDescription {
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 6px;
+    color: var(--cl-dgrey);
+}
+
+.PopupReviewWriteMode__submitError {
+    padding: 14px;
+    color: var(--cl-red);
+    font-size: 14px;
+}
+
+.PopupReviewWriteMode__errorWrapper{
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .PopupReviewWriteMode {
+        margin-top: 10px;
+    }
+
+    .PopupReviewWriteMode__reviewFormTitle {
+        font-size: 28px;
+        margin-top: 12px;
+    }
+
+    .PopupReviewWriteMode__reviewFormButtonContainer {
+        width: 98%;
+        gap: 35px;
+    }
+}
+
+@media (max-width: 425px) {
+    .PopupReviewWriteMode__reviewFormTitle {
+        font-size: 24px;
+        margin-top: 0;
+        padding-bottom: 12px;
+        line-height: 1.4;
+    }
+
+    .PopupReviewWriteMode__reviewFormInput textarea {
+        height: 120px;
+    }
+
+    .PopupReviewWriteMode__reviewFormButtonContainer {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .PopupReviewWriteMode__reviewFormButtonContainer .Button {
+        margin-block: 4px;
+
+    }
+
+    .PopupReviewWriteMode__reviewFormInput {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .PopupReviewWriteMode {
+        margin-top: 40px;
+    }
+}

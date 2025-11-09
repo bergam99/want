@@ -1,0 +1,117 @@
+.Slider__button svg{
+    width: 26px;
+}
+.Slider__buttonWrapper {
+    position: fixed;
+    top: 14px;
+    right: 10px;
+    z-index: 3000;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.Slider__notif {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    color: var(--cl-red);
+}
+
+.Slider__dashboard {
+    position: relative;
+}
+
+.Slider__notifNav {
+    color: var(--cl-red);
+    position: absolute;
+    top: -6px;
+    right: -9px;
+}
+
+.Slider__menu {
+    position: fixed;
+    right: -91vw;
+    border-left: 1px solid black;
+    width: 90vw;
+    background: white;
+    transition: right 0.3s ease-in-out;
+    z-index: 2000;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.Slider__navs {
+    flex: 1;
+    padding: 70px 40px;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .Slider__menu {
+        width: 50vw;
+    }
+
+    .Slider__buttonWrapper {
+        right: 20px;
+    }
+}
+
+.Slider__menu.open {
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.Slider__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    /* hidden bg by default */
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.Slider__background.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.Slider__li {
+    margin-bottom: 18px;
+    font-weight: 200;
+}
+
+.Slider__navItem:hover,
+.Slider__navItemActive {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.Slider__auth:hover,
+.Slider__authActive {
+    color: var(--cl-red);
+}
+
+.Slider__user {
+    border-top: 1px solid;
+    padding: 30px 40px;
+}
+
+.Slider__logout {
+    color: var(--cl-red);
+    margin-top: 30px;
+}
+
+.Slider__CustomSelectorWrapper {
+    margin-bottom: 30px;
+    margin-left: 30px;
+}

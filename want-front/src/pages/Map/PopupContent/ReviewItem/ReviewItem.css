@@ -1,0 +1,71 @@
+.ReviewItem__user {
+    margin-bottom: 10px;
+}
+
+.ReviewItem__SvgStarsTimeContainer {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.ReviewItem__SvgStars {
+    display: flex;
+}
+
+.ReviewItem__SvgStars svg {
+    width: 12px;
+}
+
+.ReviewItem__spot {
+    font-size: 9px;
+}
+
+.ReviewItem__time {
+    font-size: 12px;
+}
+
+.ReviewItem__comment {
+    font-size: 14px;
+    font-weight: 300;
+    padding-block: 14px;
+    line-height: 20px;
+    overflow-wrap: break-word;
+}
+
+.ReviewItem__SvgLike {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+}
+
+.ReviewItem__SvgLike svg {
+    width: 14px;
+}
+
+.ReviewItem__likeCount {
+    font-size: 14px;
+}
+
+.ReviewItem__editBtn,
+.ReviewItem__deleteBtn {
+    font-size: 12px;
+    border-bottom: 1px solid;
+}
+
+.ReviewItem__editBtn:hover,
+.ReviewItem__deleteBtn:hover {
+    font-weight: 500;
+}
+
+.ReviewItem__buttons {
+    padding-block: 6px;
+}
+
+.ReviewItem__editBtn {
+    margin-right: 10px;
+}
+
+.ReviewItem__deleteBtn:hover {
+    color: var(--cl-red);
+}

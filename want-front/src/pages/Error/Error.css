@@ -1,0 +1,29 @@
+.Error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 24px 15px;
+    height: 80vh;
+}
+
+.Error__status {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.Error__data {
+    margin-bottom: 6px;
+    font-weight: 300;
+    color: var(--cl-red);
+}
+
+.Error__401Text {
+    font-size: 18px;
+}
+
+.Error__button1,
+.Error__button2 {
+    width: 300px;
+    margin-top: 13px;
+}

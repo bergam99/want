@@ -1,0 +1,12 @@
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: var(--sp-13);
+}
+
+@media (min-width: 768px) {
+    .Header {
+        justify-content: center;
+    }
+}

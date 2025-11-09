@@ -1,0 +1,134 @@
+.TierProgressBar {
+    padding-top: 20px;
+}
+
+.TierProgressBar__currentTierTitle {
+    font-size: 62px;
+    margin-bottom: 20px;
+}
+
+.TierProgressBar__label {
+    font-size: 24px;
+    font-weight: 200;
+}
+
+.TierProgressBar__statsContainer {
+    display: flex;
+    margin-block: 30px;
+}
+
+.TierProgressBar__statsItem {
+    padding-inline: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+
+}
+
+.TierProgressBar__statsItem:not(:last-child) {
+    border-right: 1px solid;
+}
+
+.TierProgressBar__statsLabel {
+    font-weight: 300;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.TierProgressBar__statValue {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.TierProgressBar__tooltipIcon svg {
+    width: 30px;
+    aspect-ratio: 1;
+    margin: 0 4px 10px;
+}
+
+.TierProgressBar__tooltipIcon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.TierProgressBar__tooltipMsg {
+    position: absolute;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: nowrap;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-100%);
+}
+
+.TierProgressBar__tooltipMsgItem {
+    margin-bottom: 4px;
+    list-style: none;
+}
+
+.TierProgressBar__bar {
+    margin-block: 20px;
+    background-color: var(--cl-lgrey);
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.TierProgressBar__barFill {
+    background-color: black;
+    border-radius: 20px;
+    height: 100%;
+    transition: width 0.5s ease,
+}
+
+.TierProgressBar__remain {
+    font-weight: 200;
+    text-align: center;
+}
+
+.TierProgressBar__scoreBoardLink {
+    font-weight: 400;
+}
+
+.TierProgressBar__scoreBoardLink:hover {
+    text-decoration: underline;
+}
+
+/* Tooltip */
+@media (min-width: 407px) {
+    .TierProgressBar__tooltipMsg {
+        left: 0;
+        transform: translateX(0%);
+    }
+}
+
+@media (min-width: 445px) {
+    .TierProgressBar__tooltipMsg {
+        left: 100%;
+        transform: translateX(-100%);
+    }
+}
+
+@media (min-width: 768px) {
+    .TierProgressBar__tooltipMsg {
+        top: 0;
+        left: 100%;
+        transform: none;
+    }
+
+    .TierProgressBar__statsItem {
+        padding: 30px;
+    }
+
+    .TierProgressBar__statsContainer {
+        margin-block: 45px 30px;
+    }
+}

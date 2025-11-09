@@ -1,0 +1,70 @@
+:root {
+  --cl-red: #ff6347;
+  --cl-lgrey: #eee;
+  --cl-grey: #dddddd;
+  --cl-dgrey: #adadad;
+
+
+  --fs-10: 10px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-30: 30px;
+  --fs-32: 32px;
+
+  --fw-100: 100;
+
+  --sp-2: 2px;
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-10: 10px;
+  --sp-11: 11px;
+  --sp-13: 13px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+
+  --max-width: 95vw;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  list-style: none;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+textarea {
+  all: unset;
+}
+
+svg {
+  width: 18px;
+  aspect-ratio: 1;
+  height: fit-content;
+}
+
+.leaflet-container a {
+  color: black;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --max-width: 97vw;
+  }
+}
+
+/*
+  --breakpoint-mob-s: 320px;
+  --breakpoint-tab: 768px;
+  --breakpoint-des-l: 1440px;
+ */

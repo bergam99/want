@@ -1,0 +1,11 @@
+.BasicLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.BasicLayout__main {
+    flex: 1;
+    margin-inline:  var(--sp-13);
+    display: flex;
+}

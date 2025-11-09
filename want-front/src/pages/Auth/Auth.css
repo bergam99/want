@@ -1,0 +1,81 @@
+.Auth {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Auth__form {
+    min-width: 300px;
+}
+
+.Auth__formTitle {
+    font-size: 46px;
+    margin-bottom: var(--sp-20);
+}
+
+.Auth__switchWrapper {
+    font-size: var(--fs-14);
+    display: flex;
+    align-items: center;
+}
+
+.Auth__switch {
+    margin-left: 6px;
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
+
+.Auth__switch:hover {
+    font-weight: 500;
+}
+
+.Auth__field input {
+    all: unset;
+}
+
+.Auth__button {
+    margin-block: 28px 18px;
+}
+
+.Auth__result {
+    padding-bottom: 14px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.Auth__result.Auth__error {
+    color: var(--cl-red);
+}
+
+/* Floating label */
+.Auth__field {
+    position: relative;
+    margin-bottom: var(--sp-16);
+    width: 100%;
+}
+
+.Auth__field label {
+    position: absolute;
+    top: 1rem; /* label on input */
+    transition: all 0.2s ease-in-out;
+    pointer-events: none; /* only input can be clicked */
+    color: var(--cl-dgrey);
+}
+
+.Auth__field input {
+    width: 100%;
+    padding: 1rem 0.01rem 0.25rem 0;
+    outline: none;
+    border-bottom: 1px solid;
+    background-color: transparent
+}
+
+.Auth__field input:focus+label,
+/* if focus on input then select label */
+.Auth__field input:not(:placeholder-shown)+label {
+    /* if place holder is not shown then select label */
+    top: -0.5rem;
+    font-size: 0.75rem;
+    color: black;
+}

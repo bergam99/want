@@ -1,0 +1,73 @@
+.Toggle {
+    padding: 9px 12px;
+    position: relative;
+    font-size: 14px;
+    border: 1px solid;
+    border-radius: 12px;
+}
+
+.Toggle__btn::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* background: rgba(255, 0, 0, 0.2); */
+}
+
+.Toggle__btn {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    justify-content: space-between;
+    padding-inline: 4px;
+}
+
+.Toggle__titleWrapper {
+    position: relative;
+}
+
+.Toggle__dot {
+    position: absolute;
+    color: var(--cl-red);
+    top: -4px;
+    right: -7px;
+}
+
+
+/* arrow */
+.Toggle__arrow {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+}
+
+.Toggle__arrow svg {
+    width: 22px;
+}
+
+.Toggle__arrow.isOpen {
+    transform: rotate(-180deg);
+}
+.Toggle__noNotif{
+    margin-top: 10px;
+    font-weight: 100;
+}
+
+/* collapse animation */
+.Toggle__menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+    padding-block: 0;
+}
+
+.Toggle__menu.isOpen {
+    padding-block: var(--sp-4);
+    max-height: 300px;
+    padding-block: 6px;
+}

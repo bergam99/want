@@ -1,0 +1,16 @@
+.PopupReviewForm__starsContainer {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.PopupReviewForm__starsContainer svg {
+    width: 40px;
+}
+
+@media (min-width: 425px) {
+    .PopupReviewForm__starsContainer svg {
+        width: 52px;
+    }
+}
