@@ -18,7 +18,7 @@ import type { Area, FoundLocation } from "../mapData";
 import "./MapContainer.css";
 import PopupContent from "../PopupContent/PopupContent";
 import MapContainerFilter from "./MapContainerFilter/MapContainerFilter";
-import MarkerClusterGroup from "react-leaflet-cluster";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 import LayerSelector from "../LayerSelector/LayerSelector";
 
 export const OSM = "OSM";
