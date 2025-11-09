@@ -1,0 +1,108 @@
+
+pipeline {
+    agent {
+        label "$NODE"
+    }
+    tools {
+        nodejs "NODE22"
+        maven "MVN39"
+        jdk "JDK21"
+    }
+    options {
+        withFolderProperties() 
+        skipDefaultCheckout(true)
+    }
+    stages {
+        stage("Pre stage"){
+           steps {
+             script {
+                if(params.event != 'push') {
+                    currentBuild.currentResult = "ABORTED"
+                    error("Must be a push event, was: " + params.event)
+                }
+                cleanWs() 
+                checkout scm // checkout apres clean (pull)
+                echo "${NODE}"
+                echo "${params.event}"
+                echo "${params.delivery}"
+                echo "${params.hook}"
+                echo "${params.trigger}"
+            }
+           }
+        }
+        // stage ("Prepare buisness artifacts") {
+        //     steps {
+        //         script {
+        //             try{
+        //                 configFileProvider(
+        //                     [configFile(fileId: 'toto-buisness-env', variable: 'ENV_FILE_PATH')]) {
+        //                     sh('bash want-jenkins/prepare-buisness.sh $ENV_FILE_PATH') 
+        //                 }
+        //             } catch(Exception ex) {
+        //                 unstable("Error in stage ${env.STAGE_NAME}: " + ex.toString()) // UNSTABLE
+
+        //             }
+        //         }
+                    
+        //     }
+        // }
+        stage ("Prepare presentation artifacts") {
+            steps {
+                script {
+                    try{
+                        configFileProvider(
+                            [configFile(fileId: 'want-presentation-env', variable: 'ENV_FILE_PATH')]) {
+                            sh('bash want-jenkins/prepare-presentation.sh $ENV_FILE_PATH')
+                        }
+                    } catch(Exception ex) {
+                        unstable("Error in stage ${env.STAGE_NAME}: " + ex.toString()) // UNSTABLE
+
+                    }
+                }
+                    
+            }
+        }
+        //  stage("Deploy buisness"){
+        //     when{
+        //         expression { currentBuild.currentResult != "UNSTABLE" }
+        //     }
+        //     steps {
+        //       script {
+        //             try{
+        //                 sh('bash want-jenkins/deploy-buisness.sh  $TOTO_BUISNESS_DEPLOY_DIR $TOTO_BUISNESS_URL $TOTO_BUISNESS_PORT') 
+        //             } catch(Exception ex) {
+        //                 error("Error in stage ${env.STAGE_NAME}: " + ex.toString())
+
+        //             }
+        //         }
+        //     }
+        // }
+        stage("Deploy presentation"){
+            when{
+                expression { currentBuild.currentResult != "UNSTABLE" }
+            }
+            steps {
+              script {
+                    try{
+                        sh('bash want-jenkins/deploy-presentation.sh  $WANT_PRESENTATION_DEPLOY_DIR $WANT_PRESENTATION_URL') 
+                    } catch(Exception ex) {
+                        error("Error in stage ${env.STAGE_NAME}: " + ex.toString())
+
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script{
+                if(params.report){
+                    echo "Sending report..."
+                  mail(to:"${MAIL_TO}", subject:"test sub", body:"Jenkins, ${BUILD_URL}, Build status : ${currentBuild.currentResult}, Job name: ${JOB_NAME}")
+                } else {
+                    echo "Report disabled, not sending report."
+                }
+            }
+        }
+    }
+}
