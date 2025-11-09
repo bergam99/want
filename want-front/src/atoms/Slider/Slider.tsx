@@ -8,8 +8,8 @@ import { emailFormatter } from "../../utils";
 import CustomSelector from "../CustomSelector/CustomSelector";
 import { useTranslation } from "react-i18next";
 import { LANG } from "../../i18n";
-import SvgMenuBurger from "@/assets/svg/menuburger.svg";
-import SvgBurgerClose from "@/assets/svg/close.svg";
+import { ReactComponent as SvgMenuBurger } from "@/assets/svg/menuburger.svg";
+import { ReactComponent as SvgBurgerClose } from "@/assets/svg/close.svg";
 
 const Slider = () => {
   const { getNotifications } = useNotificationStore();

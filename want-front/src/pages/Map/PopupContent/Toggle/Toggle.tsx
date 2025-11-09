@@ -4,7 +4,7 @@ import DescriptionBox from "../../DescriptionBox/DescriptionBox";
 import { useState } from "react";
 import { useNotificationStore } from "../../../../store/notification";
 import { useTranslation } from "react-i18next";
-import SvgToggleArrow from "@/assets/svg/toggle_arrow.svg";
+import { ReactComponent as SvgToggleArrow } from "@/assets/svg/toggle_arrow.svg";
 
 type ToggleType = {
   content: string[];

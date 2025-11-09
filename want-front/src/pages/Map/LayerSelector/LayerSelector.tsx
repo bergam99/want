@@ -2,7 +2,7 @@ import { Fragment, type Dispatch, type SetStateAction } from "react";
 import { OSM, SAT } from "../MapContainer/MapContainer";
 import "./LayerSelector.css";
 import classNames from "classnames";
-import SvgSatellite from "@/assets/svg/satellite.svg";
+import { ReactComponent as SvgSatellite } from "@/assets/svg/satellite.svg";
 
 type LayerSelectorType = {
   selectedLayer: string;

@@ -3,7 +3,7 @@ import { Fragment } from "react/jsx-runtime";
 import DescriptionBox from "../../DescriptionBox/DescriptionBox";
 import { useState } from "react";
 import "./MapContainerFilter.css";
-import SvgFilter from "@/assets/svg/filter.svg";
+import { ReactComponent as SvgFilter } from "@/assets/svg/filter.svg";
 
 type MapContainerFilterType = {
   filters: { wheelchair: boolean; fee: boolean; opening_hours: boolean };

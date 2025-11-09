@@ -3,7 +3,7 @@ import type { ReviewsType } from "../../../store/reviews";
 import "./TierProgressBar.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import SvgTooltip from "@/assets/svg/tooltip.svg";
+import { ReactComponent as SvgTooltip } from "@/assets/svg/tooltip.svg";
 
 type Tier = {
   title: string;

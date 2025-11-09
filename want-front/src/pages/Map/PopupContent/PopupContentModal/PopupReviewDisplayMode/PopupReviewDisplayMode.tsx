@@ -7,7 +7,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import DescriptionBox from "../../../DescriptionBox/DescriptionBox";
-import SvgPen from "@/assets/svg/pen.svg";
+import { ReactComponent as SvgPen } from "@/assets/svg/pen.svg";
 
 type PopupReviewDisplayModeType = {
   setSubmitReviewMsg: React.Dispatch<

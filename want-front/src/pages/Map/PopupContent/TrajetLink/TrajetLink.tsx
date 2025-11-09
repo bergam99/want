@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { generateMapLink } from "../../../../utils";
 import "./TrajetLink.css";
 import { useTranslation } from "react-i18next";
-import SvgAppleMap from "@/assets/svg/applemap.svg";
-import SvgGoogleMap from "@/assets/svg/googlemap.svg";
+import { ReactComponent as SvgAppleMap } from "@/assets/svg/applemap.svg";
+import { ReactComponent as SvgGoogleMap } from "@/assets/svg/googlemap.svg";
 
 type TrajetLinkType = {
   lat: number;

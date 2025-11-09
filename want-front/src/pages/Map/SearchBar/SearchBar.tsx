@@ -4,7 +4,7 @@ import CustomSelector from "../../../atoms/CustomSelector/CustomSelector";
 import Logo from "../../../atoms/Logo/Logo";
 import type { Area } from "../mapData";
 import "./SearchBar.css";
-import SvgArrowRight from "@/assets/svg/arrow-right.svg";
+import { ReactComponent as SvgArrowRight } from "@/assets/svg/arrow-right.svg";
 import SuggestionSearch from "../../../atoms/SuggestionSearch/SuggestionSearch";
 import FailedPopup from "../FailedPopup/FailedPopup";
 

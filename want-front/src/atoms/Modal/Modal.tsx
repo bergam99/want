@@ -1,7 +1,7 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.css";
-import SvgClose from "@/assets/svg/close.svg";
+import { ReactComponent as SvgClose } from "@/assets/svg/close.svg";
 
 export type ModalHandlersType = {
   open: () => void;

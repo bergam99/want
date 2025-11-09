@@ -3,7 +3,7 @@ import CustomSelector from "../../../atoms/CustomSelector/CustomSelector";
 import type { Area } from "../mapData";
 import "./Overlay.css";
 import Button from "../../../atoms/Button/Button";
-import SvgArrowRight from "@/assets/svg/arrow-right.svg";
+import { ReactComponent as SvgArrowRight } from "@/assets/svg/arrow-right.svg";
 import SuggestionSearch from "../../../atoms/SuggestionSearch/SuggestionSearch";
 
 type OverlayType = {
