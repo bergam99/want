@@ -2,7 +2,7 @@ import { Fragment, type Dispatch, type SetStateAction } from "react";
 import { OSM, SAT } from "../MapContainer/MapContainer";
 import "./LayerSelector.css";
 import classNames from "classnames";
-// import SvgSatellite from "@/assets/svg/satellite.svg";
+import { SvgSatellite } from "../../../assets/svg/svgWithProps/SvgSatellite";
 
 type LayerSelectorType = {
   selectedLayer: string;
@@ -25,8 +25,7 @@ const LayerSelector = ({
         })}
         onClick={toggleLayer}
       >
-        {/* <SvgSatellite color={selectedLayer === SAT ? "white" : "black"} /> */}{" "}
-        TODO
+        <SvgSatellite color={selectedLayer === SAT ? "white" : "black"} />
       </button>
     </Fragment>
   );

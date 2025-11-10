@@ -3,8 +3,8 @@ import { useReviewsStore, type ReviewType } from "../../../../store/reviews";
 import { emailFormatter, getFranceTime } from "../../../../utils";
 import "./ReviewItem.css";
 import { jwtDecoder } from "../../../Auth/Auth_utils";
-// import SvgStar from "@/assets/svg/star.svg"; TODO
 import SvgLike from "@/assets/svg/like.svg";
+import { SvgStar } from "../../../../assets/svg/svgWithProps/SvgStar";
 
 type ReviewItemType = {
   review: ReviewType;
@@ -46,7 +46,7 @@ const ReviewItem = ({ review, isDisplayMode }: ReviewItemType) => {
         <div className="ReviewItem__SvgStars">
           {[1, 2, 3, 4, 5].map((star) => (
             <div key={star}>
-              {/* <SvgStar color={star <= review.rating ? "#000000" : "#dddddd"} /> */}
+              <SvgStar color={star <= review.rating ? "#000000" : "#dddddd"} />
             </div>
           ))}
         </div>

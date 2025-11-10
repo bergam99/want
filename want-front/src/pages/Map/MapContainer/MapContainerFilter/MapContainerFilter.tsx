@@ -3,7 +3,7 @@ import { Fragment } from "react/jsx-runtime";
 import DescriptionBox from "../../DescriptionBox/DescriptionBox";
 import { useState } from "react";
 import "./MapContainerFilter.css";
-// import SvgFilter from "@/assets/svg/filter.svg";TODO
+import { SvgFilter } from "../../../../assets/svg/svgWithProps/SvgFilter";
 
 type MapContainerFilterType = {
   filters: { wheelchair: boolean; fee: boolean; opening_hours: boolean };
@@ -39,7 +39,7 @@ const MapContainerFilter = ({
         })}
         onClick={() => setIsToggleOpen(!isToggleOpen)}
       >
-        {/* <SvgFilter color={Inverted ? "white" : "black"} /> */}
+        <SvgFilter color={Inverted ? "white" : "black"} />
       </button>
 
       <div
