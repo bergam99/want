@@ -6,7 +6,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
-  console.log(env.VITE_BASE_URL);
+  // console.log(env.VITE_BASE_URL);
 
   return {
     plugins: [
@@ -37,7 +37,5 @@ export default defineConfig(({ mode }) => {
       },
     },
     base: env.VITE_BASE_URL,
-    // base: mode === "production" ? "/web-context/" : "/",
-    // base: "/web-context/",
   };
 });
