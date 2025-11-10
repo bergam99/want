@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import "./StarRating.css";
 import type { UseFormRegisterReturn } from "react-hook-form";
-import { ReactComponent as SvgStar } from "@/assets/svg/star.svg";
+// import SvgStar from "@/assets/svg/star.svg";TODO
 
 type StarRatingType = {
   hovered: number | null;
@@ -27,6 +27,7 @@ const StarRating = ({
           // repeat on 0,1,2,3,4
           const value = i + 1;
           // if user hover then fill until hovered area, if not until selected area
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const isFilled =
             hovered !== null ? value <= hovered : value <= selected;
 
@@ -37,7 +38,7 @@ const StarRating = ({
               onMouseLeave={() => setHovered(null)}
               onClick={() => setSelected(value)}
             >
-              <SvgStar color={isFilled ? "#000000" : "#dddddd"} />
+              {/* <SvgStar color={isFilled ? "#000000" : "#dddddd"} /> */}
             </div>
           );
         })}
