@@ -32,7 +32,7 @@ fi
 
 echo " > Deploy target/*.jar to ${WANT_BUISNESS_DEPLOY_DIR}"
 rm -rf $WANT_BUISNESS_DEPLOY_DIR/* # supprimer dans le folder l'ancien build
-cp ./want-buisness/target/*.jar $WANT_BUISNESS_DEPLOY_DIR/want-buisness.jar # sur ecrire (les artifacts de build dans dist -> copy deploy directory)
+cp ./want-back/target/*.jar $WANT_BUISNESS_DEPLOY_DIR/want-buisness.jar # sur ecrire (les artifacts de build dans dist -> copy deploy directory)
 
 JENKINS_NODE_COOKIE=dontKillMe nohup java -jar -Dspring.profiles.active=prod $WANT_BUISNESS_DEPLOY_DIR/want-buisness.jar &
 

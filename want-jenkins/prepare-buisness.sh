@@ -9,11 +9,11 @@ echo "> Execution ${SCRIPT}"
 
 echo " > Preparing buisness artifacts with maven and java: "
 
-echo " > Copy tmp env file to ./want-buisness/src/main/resources/application-prod.properties"
-cp $ENV_FILE_PATH ./want-buisness/src/main/resources/application-prod.properties # copie source -> destination
+echo " > Copy tmp env file to ./want-back/src/main/resources/application-prod.properties"
+cp $ENV_FILE_PATH ./want-back/src/main/resources/application-prod.properties # copie source -> destination
 
 mvn -v
-mvn -Dmaven.test.skip=true -f ./want-buisness/pom.xml package
+mvn -Dmaven.test.skip=true -f ./want-back/pom.xml package
 
-echo " > Copy tmp env file to ./want-buisness/.env.production"
+echo " > Copy tmp env file to ./want-back/.env.production"
 cp $ENV_FILE_PATH ./want-presentation/.env.production
