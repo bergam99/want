@@ -30,22 +30,22 @@ pipeline {
             }
            }
         }
-        // stage ("Prepare buisness artifacts") {
-        //     steps {
-        //         script {
-        //             try{
-        //                 configFileProvider(
-        //                     [configFile(fileId: 'toto-buisness-env', variable: 'ENV_FILE_PATH')]) {
-        //                     sh('bash want-jenkins/prepare-buisness.sh $ENV_FILE_PATH') 
-        //                 }
-        //             } catch(Exception ex) {
-        //                 unstable("Error in stage ${env.STAGE_NAME}: " + ex.toString()) // UNSTABLE
+        stage ("Prepare buisness artifacts") {
+            steps {
+                script {
+                    try{
+                        configFileProvider(
+                            [configFile(fileId: 'want-buisness-env', variable: 'ENV_FILE_PATH')]) {
+                            sh('bash want-jenkins/prepare-buisness.sh $ENV_FILE_PATH') 
+                        }
+                    } catch(Exception ex) {
+                        unstable("Error in stage ${env.STAGE_NAME}: " + ex.toString()) // UNSTABLE
 
-        //             }
-        //         }
+                    }
+                }
                     
-        //     }
-        // }
+            }
+        }
         stage ("Prepare presentation artifacts") {
             steps {
                 script {
@@ -62,21 +62,21 @@ pipeline {
                     
             }
         }
-        //  stage("Deploy buisness"){
-        //     when{
-        //         expression { currentBuild.currentResult != "UNSTABLE" }
-        //     }
-        //     steps {
-        //       script {
-        //             try{
-        //                 sh('bash want-jenkins/deploy-buisness.sh  $TOTO_BUISNESS_DEPLOY_DIR $TOTO_BUISNESS_URL $TOTO_BUISNESS_PORT') 
-        //             } catch(Exception ex) {
-        //                 error("Error in stage ${env.STAGE_NAME}: " + ex.toString())
+         stage("Deploy buisness"){
+            when{
+                expression { currentBuild.currentResult != "UNSTABLE" }
+            }
+            steps {
+              script {
+                    try{
+                        sh('bash want-jenkins/deploy-buisness.sh  $WANT_BUISNESS_DEPLOY_DIR $WANT_BUISNESS_URL $WANT_BUISNESS_PORT') 
+                    } catch(Exception ex) {
+                        error("Error in stage ${env.STAGE_NAME}: " + ex.toString())
 
-        //             }
-        //         }
-        //     }
-        // }
+                    }
+                }
+            }
+        }
         stage("Deploy presentation"){
             when{
                 expression { currentBuild.currentResult != "UNSTABLE" }
