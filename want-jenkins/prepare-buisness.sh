@@ -16,4 +16,4 @@ mvn -v
 mvn -Dmaven.test.skip=true -f ./want-back/pom.xml package
 
 echo " > Copy tmp env file to ./want-back/.env.production"
-cp $ENV_FILE_PATH ./want-presentation/.env.production
+cp $ENV_FILE_PATH ./want-back/.env.production
