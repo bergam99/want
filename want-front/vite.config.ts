@@ -21,15 +21,6 @@ export default defineConfig(({ mode }) => {
         include: "**/*.svg",
       }),
     ],
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            react: ["react", "react-dom"],
-          },
-        },
-      },
-    },
     test: {
       environment: "jsdom",
       globals: true,
