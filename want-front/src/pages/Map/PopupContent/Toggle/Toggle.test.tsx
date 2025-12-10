@@ -2,14 +2,12 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Toggle from "./Toggle";
 
-// 🔧 Mock: i18next translation
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) => key,
   }),
 }));
 
-// 🔧 Mock SVG import
 vi.mock("@/assets/svg/toggle_arrow.svg", () => ({
   default: () => <svg data-testid="toggle-arrow"></svg>,
 }));
