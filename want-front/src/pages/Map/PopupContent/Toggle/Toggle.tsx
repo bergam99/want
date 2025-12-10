@@ -26,7 +26,7 @@ const Toggle = ({ title, content, isNotifMode = false }: ToggleType) => {
 
   return (
     <div className="Toggle">
-      <div onClick={handleToggleClick}>
+      <button onClick={handleToggleClick}>
         <p className="Toggle__btn">
           <span className="Toggle__titleWrapper">
             {title}
@@ -40,7 +40,7 @@ const Toggle = ({ title, content, isNotifMode = false }: ToggleType) => {
             <SvgToggleArrow />
           </span>
         </p>
-      </div>
+      </button>
 
       <div className={classNames("Toggle__menu", { isOpen: isOpen })}>
         {content.map((c, i) => (
