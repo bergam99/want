@@ -20,20 +20,19 @@ pipeline {
     }
     stages {
         stage("Before prepare")  {
-           steps {
-             script {
-                if(params.event != 'push') {
-                    currentBuild.currentResult = "ABORTED"
-                    error("Expected 'push' event, was '" + params.event + "'")
+            steps {
+                script {
+                    if(params.event != 'push') {
+                        currentBuild.currentResult = "ABORTED"
+                        error("Expected 'push' event, was '" + params.event + "'")
+                    }
+                    cleanWs() 
+                    checkout scm // checkout apres clean (pull)
+                    utils = load("${GROOVY_DIR}/utils.groovy")
+                    utils.printParams(params)
                 }
-                cleanWs() 
-                checkout scm // checkout apres clean (pull)
-                utils = load("${GROOVY_DIR}/utils.groovy")
-                utils.printParams(params)
-                }
-           }
+            }
         }
-        // No prepare data stage in this 'context', psql and SQL files are the artifacts
         stage("Prepare business artifacts") {
             steps {
                 script {
@@ -46,7 +45,7 @@ pipeline {
                 }
             }
         }
-           stage("Prepare presentation artifacts") {
+        stage("Prepare presentation artifacts") {
             steps {
                 script {
                     utils.handleStage({
@@ -58,7 +57,7 @@ pipeline {
                 }
             }
         }
-         stage("Before deploy") { // Checks if build is unstable, if so then fail
+        stage("Before deploy") { // Checks if build is unstable, if so then fail
             steps {
                 script {
                     if(utils.jobIsUnstable()) {
@@ -67,7 +66,7 @@ pipeline {
                 }
             }
         }
-         stage("Deploy data") {
+        stage("Deploy data") {
             environment {
                 DB_ADMIN = credentials("banyan-db-admin-user")
             }
@@ -77,9 +76,9 @@ pipeline {
                         utils.bash('$SH_DIR/deploy-data.sh', env.WANT_DATA_DEPLOY_DIR, env.DB_ADMIN_USR, env.DB_ADMIN_PSW, 'banyan', 'want_app')
                     })
                 }
-            }       
-            
-            stage("Deploy business") {
+            }
+        }
+        stage("Deploy business") {
             steps {
                 script {
                     utils.handleStage({
@@ -88,7 +87,7 @@ pipeline {
                 }
             }
         }
-         stage("Deploy presentation") {
+        stage("Deploy presentation") {
             steps {
                 script {
                     utils.handleStage({
@@ -110,5 +109,4 @@ pipeline {
             }
         }
     }
-}
 }
