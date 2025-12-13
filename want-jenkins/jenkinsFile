@@ -78,15 +78,15 @@ pipeline {
         //         }
         //     }
         // }
-        stage("Deploy business") {
-            steps {
-                script {
-                    utils.handleStage({
-                        utils.bash('$SH_DIR/deploy-business.sh', env.WANT_BUSINESS_DEPLOY_DIR, env.WANT_BUSINESS_URL, env.WANT_BUSINESS_PORT)
-                    })
-                }
-            }
-        }
+        // stage("Deploy business") {
+        //     steps {
+        //         script {
+        //             utils.handleStage({
+        //                 utils.bash('$SH_DIR/deploy-business.sh', env.WANT_BUSINESS_DEPLOY_DIR, env.WANT_BUSINESS_URL, env.WANT_BUSINESS_PORT)
+        //             })
+        //         }
+        //     }
+        // }
         stage("Deploy presentation") {
             steps {
                 script {
