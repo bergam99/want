@@ -26,6 +26,7 @@ pipeline {
                         currentBuild.currentResult = "ABORTED"
                         error("Expected 'push' event, was '" + params.event + "'")
                     }
+                    echo "test"
                     cleanWs() 
                     checkout scm // checkout apres clean (pull)
                     utils = load("${GROOVY_DIR}/utils.groovy")
