@@ -1,3 +1,4 @@
+def utils
 
 pipeline {
     agent {
@@ -12,97 +13,102 @@ pipeline {
         withFolderProperties() 
         skipDefaultCheckout(true)
     }
+    environment {
+        def SCRIPTS_DIR="want-jenkins/scripts"
+        def GROOVY_DIR="${SCRIPTS_DIR}/groovy"
+        def SH_DIR="${SCRIPTS_DIR}/sh"
+    }
     stages {
-        stage("Pre stage"){
+        stage("Before prepare")  {
            steps {
              script {
                 if(params.event != 'push') {
                     currentBuild.currentResult = "ABORTED"
-                    error("Must be a push event, was: " + params.event)
+                    error("Expected 'push' event, was '" + params.event + "'")
                 }
                 cleanWs() 
                 checkout scm // checkout apres clean (pull)
-                echo "${NODE}"
-                echo "${params.event}"
-                echo "${params.delivery}"
-                echo "${params.hook}"
-                echo "${params.trigger}"
-            }
+                utils = load("${GROOVY_DIR}/utils.groovy")
+                utils.printParams(params)
+                }
            }
         }
-        // stage ("Prepare buisness artifacts") {
-        //     steps {
-        //         script {
-        //             try{
-        //                 configFileProvider(
-        //                     [configFile(fileId: 'toto-buisness-env', variable: 'ENV_FILE_PATH')]) {
-        //                     sh('bash want-jenkins/prepare-buisness.sh $ENV_FILE_PATH') 
-        //                 }
-        //             } catch(Exception ex) {
-        //                 unstable("Error in stage ${env.STAGE_NAME}: " + ex.toString()) // UNSTABLE
-
-        //             }
-        //         }
-                    
-        //     }
-        // }
-        stage ("Prepare presentation artifacts") {
+        // No prepare data stage in this 'context', psql and SQL files are the artifacts
+        stage("Prepare business artifacts") {
             steps {
                 script {
-                    try{
+                    utils.handleStage({
                         configFileProvider(
-                            [configFile(fileId: 'want-presentation-env', variable: 'ENV_FILE_PATH')]) {
-                            sh('bash want-jenkins/prepare-presentation.sh $ENV_FILE_PATH')
+                            [configFile(fileId: 'want-business-env', variable: 'ENV_FILE_PATH')]) {
+                                utils.bash('$SH_DIR/prepare-business.sh', env.ENV_FILE_PATH)
                         }
-                    } catch(Exception ex) {
-                        unstable("Error in stage ${env.STAGE_NAME}: " + ex.toString()) // UNSTABLE
-
-                    }
+                    }, { msg -> unstable(msg) })
                 }
-                    
             }
         }
-        //  stage("Deploy buisness"){
-        //     when{
-        //         expression { currentBuild.currentResult != "UNSTABLE" }
-        //     }
-        //     steps {
-        //       script {
-        //             try{
-        //                 sh('bash want-jenkins/deploy-buisness.sh  $TOTO_BUISNESS_DEPLOY_DIR $TOTO_BUISNESS_URL $TOTO_BUISNESS_PORT') 
-        //             } catch(Exception ex) {
-        //                 error("Error in stage ${env.STAGE_NAME}: " + ex.toString())
-
-        //             }
-        //         }
-        //     }
-        // }
-        stage("Deploy presentation"){
-            when{
-                expression { currentBuild.currentResult != "UNSTABLE" }
+           stage("Prepare presentation artifacts") {
+            steps {
+                script {
+                    utils.handleStage({
+                        configFileProvider(
+                            [configFile(fileId: 'want-presentation-env', variable: 'ENV_FILE_PATH')]) {
+                                utils.bash('$SH_DIR/prepare-presentation.sh', env.ENV_FILE_PATH)
+                        }
+                    }, { msg -> unstable(msg) })
+                }
+            }
+        }
+         stage("Before deploy") { // Checks if build is unstable, if so then fail
+            steps {
+                script {
+                    if(utils.jobIsUnstable()) {
+                        error("Skipping deployment stages, at least one of prepare stages is unstable")
+                    }
+                }
+            }
+        }
+         stage("Deploy data") {
+            environment {
+                DB_ADMIN = credentials("banyan-db-admin-user")
             }
             steps {
-              script {
-                    try{
-                        sh('bash want-jenkins/deploy-presentation.sh  $WANT_PRESENTATION_DEPLOY_DIR $WANT_PRESENTATION_URL') 
-                    } catch(Exception ex) {
-                        error("Error in stage ${env.STAGE_NAME}: " + ex.toString())
-
-                    }
+                script {
+                    utils.handleStage({
+                        utils.bash('$SH_DIR/deploy-data.sh', env.WANT_DATA_DEPLOY_DIR, env.DB_ADMIN_USR, env.DB_ADMIN_PSW, 'banyan', 'want_app')
+                    })
+                }
+            }       
+            
+            stage("Deploy business") {
+            steps {
+                script {
+                    utils.handleStage({
+                        utils.bash('$SH_DIR/deploy-business.sh', env.WANT_BUSINESS_DEPLOY_DIR, env.WANT_BUSINESS_URL, env.WANT_BUSINESS_PORT)
+                    })
+                }
+            }
+        }
+         stage("Deploy presentation") {
+            steps {
+                script {
+                    utils.handleStage({
+                        utils.bash('$SH_DIR/deploy-presentation.sh', env.WANT_PRESENTATION_DEPLOY_DIR, env.WANT_PRESENTATION_URL)
+                    })
                 }
             }
         }
     }
     post {
         always {
-            script{
-                if(params.report){
+            script {
+                if(params.report) {
                     echo "Sending report..."
-                  mail(to:"${MAIL_TO}", subject:"test sub", body:"Jenkins, ${BUILD_URL}, Build status : ${currentBuild.currentResult}, Job name: ${JOB_NAME}")
+                    mail(to: "${MAIL_TO}", subject: "[JENKINS] - ${env.JOB_BASE_NAME} #${env.BUILD_ID} - ${currentBuild.currentResult} ", body: "${env.BUILD_URL}")
                 } else {
-                    echo "Report disabled, not sending report."
+                    echo "Report disabled, not sending report"
                 }
             }
         }
     }
+}
 }
