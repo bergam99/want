@@ -1,8 +1,10 @@
 #!/bin/bash
-set -e
+set -ex
 trap 'echo "Error occurred on line $LINENO"; exit 1' ERR
 
+readonly SCRIPT=$0
 readonly ENV_FILE_PATH=$1
+echo "> Execution ${SCRIPT}"
 
 echo " > Prepare presentation artifacts with node and npm"
 

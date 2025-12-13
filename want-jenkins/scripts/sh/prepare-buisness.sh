@@ -1,8 +1,10 @@
 #!/bin/bash
-set -e
-trap 'echo "Error occurred on line $LINENO"; exit 1' ERR
+set -ex
 
+readonly SCRIPT=$0
 readonly ENV_FILE_PATH=$1
+
+echo "> Execution ${SCRIPT}"
 
 echo " > Preparing buisness artifacts with maven and java: "
 
