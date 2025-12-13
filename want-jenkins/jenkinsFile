@@ -38,7 +38,7 @@ pipeline {
                 script {
                     utils.handleStage({
                         configFileProvider(
-                            [configFile(fileId: 'want-business-env', variable: 'ENV_FILE_PATH')]) {
+                            [configFile(fileId: 'want-buisness-env', variable: 'ENV_FILE_PATH')]) {
                                 utils.bash('$SH_DIR/prepare-business.sh', env.ENV_FILE_PATH)
                         }
                     }, { msg -> unstable(msg) })
