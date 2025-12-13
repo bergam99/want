@@ -4,7 +4,7 @@ readonly DEPLOY_DIR=$1 # deposer dans .jar
 readonly URL=$2
 readonly BUSINESS_PORT=$3
 
-echo " > Stop toto-business (optional operation)"
+echo " > Stop want-back (optional operation)"
 
 # Check if a process exists on port:
 lsof -ti tcp:$BUSINESS_PORT

@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import "./StarRating.css";
 import type { UseFormRegisterReturn } from "react-hook-form";
-import SvgStar from "@/assets/svg/star.svg";
+import { SvgStar } from "../../../../../../assets/svg/svgWithProps/SvgStar";
 
 type StarRatingType = {
   hovered: number | null;

@@ -3,8 +3,8 @@ import { useReviewsStore, type ReviewType } from "../../../../store/reviews";
 import { emailFormatter, getFranceTime } from "../../../../utils";
 import "./ReviewItem.css";
 import { jwtDecoder } from "../../../Auth/Auth_utils";
-import SvgStar from "@/assets/svg/star.svg";
 import SvgLike from "@/assets/svg/like.svg";
+import { SvgStar } from "../../../../assets/svg/svgWithProps/SvgStar";
 
 type ReviewItemType = {
   review: ReviewType;

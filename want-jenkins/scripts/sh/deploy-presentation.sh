@@ -11,5 +11,5 @@ echo " > Deploy dist/* to ${DEPLOY_DIR}"
 rm -r $DEPLOY_DIR/* 
 cp -r ./want-front/dist/* $DEPLOY_DIR
 
-echo " > Deployed !!"
+echo " > Want-front deployed !!"
 echo $PRESENTATION_URL
