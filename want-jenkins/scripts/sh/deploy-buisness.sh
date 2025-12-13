@@ -24,7 +24,6 @@ else
     echo " > No process running"
 fi
 
-
 echo " > Deploy target/*.jar to ${DEPLOY_DIR}"
 rm -rf $DEPLOY_DIR/* # supprimer dans le folder l'ancien build
 cp ./want-back/target/*.jar $DEPLOY_DIR/want-back.jar # sur ecrire (les artifacts de build dans dist -> copy deploy directory)
