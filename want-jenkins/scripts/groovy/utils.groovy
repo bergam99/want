@@ -23,6 +23,7 @@ def printParams(Map params) {
 }
 
 def jobState() {
+    echo "Job state: ${currentBuild.currentResult}"
     return currentBuild.currentResult;
 }
 

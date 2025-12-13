@@ -66,27 +66,27 @@ pipeline {
                 }
             }
         }
-        // stage("Deploy data") {
-        //     environment {
-        //         DB_ADMIN = credentials("banyan-db-admin-user")
-        //     }
-        //     steps {
-        //         script {
-        //             utils.handleStage({
-        //                 utils.bash('$SH_DIR/deploy-data.sh', env.WANT_DATA_DEPLOY_DIR, env.DB_ADMIN_USR, env.DB_ADMIN_PSW, 'banyan', 'want_app')
-        //             })
-        //         }
-        //     }
-        // }
-        // stage("Deploy business") {
-        //     steps {
-        //         script {
-        //             utils.handleStage({
-        //                 utils.bash('$SH_DIR/deploy-business.sh', env.WANT_BUSINESS_DEPLOY_DIR, env.WANT_BUSINESS_URL, env.WANT_BUSINESS_PORT)
-        //             })
-        //         }
-        //     }
-        // }
+        stage("Deploy data") {
+            environment {
+                DB_ADMIN = credentials("banyan-db-admin-user")
+            }
+            steps {
+                script {
+                    utils.handleStage({
+                        utils.bash('$SH_DIR/deploy-data.sh', env.WANT_DATA_DEPLOY_DIR, env.DB_ADMIN_USR, env.DB_ADMIN_PSW, 'banyan', 'want_app')
+                    })
+                }
+            }
+        }
+        stage("Deploy business") {
+            steps {
+                script {
+                    utils.handleStage({
+                        utils.bash('$SH_DIR/deploy-business.sh', env.WANT_BUSINESS_DEPLOY_DIR, env.WANT_BUSINESS_URL, env.WANT_BUSINESS_PORT)
+                    })
+                }
+            }
+        }
         stage("Deploy presentation") {
             steps {
                 script {
