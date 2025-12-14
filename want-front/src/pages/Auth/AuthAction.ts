@@ -4,6 +4,7 @@ import { redirect, type ActionFunctionArgs } from "react-router";
 export async function action({ request }: ActionFunctionArgs) {
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get("mode") || "login";
+  console.log({ searchParams, mode });
 
   if (mode !== "login" && mode !== "signup") {
     throw { error: "⚠ Unsupported mode." };
