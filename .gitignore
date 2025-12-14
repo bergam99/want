@@ -62,6 +62,8 @@ build/
 *.tmp
 *.swp
 
+.application-*.properties
+
 # Ignore test reports
 /test-output/
 .surefire/
