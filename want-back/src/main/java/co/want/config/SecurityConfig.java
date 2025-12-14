@@ -52,7 +52,10 @@ public class SecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http.cors(Customizer.withDefaults()).csrf((csrf) -> csrf.disable())
 				.authorizeHttpRequests(
-						(req) -> req.requestMatchers(HttpMethod.POST, "/auth/signup", "/auth/login").anonymous())
+						(req) -> req.requestMatchers(HttpMethod.POST, "/auth/signup", "/auth/login")
+						.anonymous().requestMatchers(
+				                HttpMethod.GET, "/test").permitAll()
+						)
 				.authorizeHttpRequests((reqs) -> reqs.anyRequest().authenticated())
 				.oauth2ResourceServer((srv) -> srv.jwt(Customizer.withDefaults())).build(); // go to JwtDecoder
 	}
