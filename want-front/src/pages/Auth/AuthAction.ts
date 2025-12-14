@@ -16,6 +16,8 @@ export async function action({ request }: ActionFunctionArgs) {
     password: data.get("password"),
   };
 
+  console.log(`request to: ${import.meta.env.VITE_BACKEND_API}/auth/${mode}`);
+
   try {
     const response = await axios.post(
       `${import.meta.env.VITE_BACKEND_API}/auth/${mode}`,
