@@ -50,13 +50,16 @@ public class SecurityConfig {
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http.cors(Customizer.withDefaults()).csrf((csrf) -> csrf.disable())
-				.authorizeHttpRequests(
-						(req) -> req.requestMatchers(HttpMethod.POST, "/auth/signup", "/auth/login")
-						.anonymous().requestMatchers(
-				                HttpMethod.GET, "/test").permitAll()
-						)
-				.authorizeHttpRequests((reqs) -> reqs.anyRequest().authenticated())
-				.oauth2ResourceServer((srv) -> srv.jwt(Customizer.withDefaults())).build(); // go to JwtDecoder
+	    return http
+	        .cors(Customizer.withDefaults())
+	        .csrf(csrf -> csrf.disable())
+	        .authorizeHttpRequests(auth -> auth
+	            .requestMatchers(HttpMethod.POST, "/auth/signup", "/auth/login").anonymous()
+	            .requestMatchers(HttpMethod.GET, "/test").permitAll()
+	            .anyRequest().authenticated()
+	        )
+	        .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+	        .build();
 	}
+
 }
