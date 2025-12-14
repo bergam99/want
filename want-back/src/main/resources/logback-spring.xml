@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+		<!-- dev log console -->
+	<springProfile name="dev">
+		<include
+			resource="org/springframework/boot/logging/logback/console-appender.xml" />
+		<root>
+			<appender-ref ref="CONSOLE" />
+		</root>
+	</springProfile>
+	<!-- prod log file -->
+	<springProfile name="prod">
+		<include
+			resource="org/springframework/boot/logging/logback/file-appender.xml" />
+		<root>
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+</configuration>
