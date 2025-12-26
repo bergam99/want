@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DEPLOY_DIR=$1 # deposer dans .jar
+readonly DEPLOY_DIR=$1
 readonly URL=$2
 readonly BUSINESS_PORT=$3
 
@@ -10,7 +10,6 @@ echo " > Stop want-back (optional operation)"
 lsof -ti tcp:$BUSINESS_PORT
 readonly LSOF_EXIT_CODE=$?
 
-# Flag to stop script execution:
 set -e
 
 # si ya seulement pas de process en cours alors demarre
@@ -25,8 +24,8 @@ else
 fi
 
 echo " > Deploy target/*.jar to ${DEPLOY_DIR}"
-rm -rf $DEPLOY_DIR/* # supprimer dans le folder l'ancien build
-cp ./want-back/target/*.jar $DEPLOY_DIR/want-back.jar # sur ecrire (les artifacts de build dans dist -> copy deploy directory)
+rm -rf $DEPLOY_DIR/*
+cp ./want-back/target/*.jar $DEPLOY_DIR/want-back.jar
 
 # nohup: no hang up
 JENKINS_NODE_COOKIE=dontKillMe nohup java -jar -Dspring.profiles.active=prod $DEPLOY_DIR/want-back.jar &
