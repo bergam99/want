@@ -34,13 +34,9 @@ const ReviewItem = ({ review, isDisplayMode }: ReviewItemType) => {
 
   return (
     <div className="ReviewItem">
-      {isDisplayMode ? (
-        <p>About {review.amenity}</p>
-      ) : (
-        <p className="ReviewItem__user">
-          {emailFormatter(review.userEmail) || "Unknown User"}
-        </p>
-      )}
+      <p className="ReviewItem__user">
+        {emailFormatter(review.userEmail) || "Unknown User"}
+      </p>
 
       <div className="ReviewItem__SvgStarsTimeContainer">
         <div className="ReviewItem__SvgStars">
