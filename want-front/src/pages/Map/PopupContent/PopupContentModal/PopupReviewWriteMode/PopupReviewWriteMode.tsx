@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import "./PopupReviewWriteMode.css";
 import { useReviewsStore, type ReviewType } from "../../../../../store/reviews";
-import { amenityFormatter } from "../../../../../utils";
 import { useRouteLoaderData } from "react-router";
 import { jwtDecoder } from "../../../../Auth/Auth_utils";
 import Button from "../../../../../atoms/Button/Button";
@@ -16,7 +15,6 @@ type PopupReviewWriteModeType = {
   setSubmitReviewMsg?: React.Dispatch<
     React.SetStateAction<string | undefined | null>
   >;
-  amenity: string;
   osmId: number;
   review?: ReviewType;
 };
@@ -42,7 +40,6 @@ type FormFieldType = z.infer<typeof reviewSchema>;
 
 const PopupReviewWriteMode = ({
   setSubmitReviewMsg = () => {},
-  amenity,
   osmId,
   review,
 }: PopupReviewWriteModeType) => {
@@ -104,15 +101,12 @@ const PopupReviewWriteMode = ({
     setSubmitReviewMsg(null);
     setServerError(null);
 
-    const formattedAmenity = amenityFormatter(amenity);
-
     const newReview: ReviewType = {
       ...(editingReview?.id ? { id: editingReview.id } : {}),
       osmId,
       userId,
       comment: fd.comment,
       rating: fd.rating,
-      amenity: formattedAmenity,
       timeStamp: new Date().toISOString(),
       likeCount: review?.likeCount ?? 0,
     };

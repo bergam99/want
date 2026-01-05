@@ -30,9 +30,6 @@ public class Review {
 	@Column(name = "rating")
 	private Integer rating;
 
-	@Column(name = "amenity")
-	private String amenity;
-
 	@Column(name = "time_stamp")
 	private Instant timeStamp;
 
@@ -83,14 +80,6 @@ public class Review {
 		this.rating = rating;
 	}
 
-	public String getAmenity() {
-		return amenity;
-	}
-
-	public void setAmenity(String amenity) {
-		this.amenity = amenity;
-	}
-
 	public Instant getTimeStamp() {
 		return timeStamp;
 	}
@@ -110,7 +99,7 @@ public class Review {
 	@Override
 	public String toString() {
 		return "Review [id=" + id + ", osmId=" + osmId + ", userId=" + userId + ", comment=" + comment + ", rating="
-				+ rating + ", amenity=" + amenity + ", timeStamp=" + timeStamp + ", likeCount=" + likeCount + "]";
+				+ rating + ", timeStamp=" + timeStamp + ", likeCount=" + likeCount + "]";
 	}
 
 }

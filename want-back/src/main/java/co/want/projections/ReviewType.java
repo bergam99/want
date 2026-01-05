@@ -11,8 +11,6 @@ public interface ReviewType {
 
 	Integer getRating();
 
-	String getAmenity();
-
 	String getUserEmail(); // joined from t_users
 
 	Instant getTimeStamp();

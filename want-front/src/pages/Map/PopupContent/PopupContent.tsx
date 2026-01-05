@@ -87,11 +87,7 @@ const PopupContent = ({ tags, lat, lon, osmId }: PopupContentType) => {
       )}
 
       <Modal ref={dialog}>
-        <PopupContentModal
-          amenity={amenity}
-          osmId={osmId}
-          errorGetReviewByOsmId={error}
-        />
+        <PopupContentModal osmId={osmId} errorGetReviewByOsmId={error} />
       </Modal>
       <TrajetLink lat={lat} lon={lon} />
       {getDescriptions.length > 0 && (

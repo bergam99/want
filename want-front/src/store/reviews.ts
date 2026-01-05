@@ -9,7 +9,6 @@ export type ReviewType = {
   userId?: number;
   comment: string;
   rating: number;
-  amenity: string;
   timeStamp: string;
   likeCount: number;
 };
@@ -83,7 +82,6 @@ export const useReviewsStore = create<ReviewStoreType>((set) => ({
     }
   },
 
-  // TODO: max char 300 -> 1000 (comment dans db) et afficher dans front
   submitReview: async (newReview, token) => {
     set({ isLoading: true });
     try {

@@ -21,7 +21,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 	@Query("""
 			    SELECT r.id AS id, r.osmId AS osmId, r.comment AS comment,
 			           r.rating AS rating, r.timeStamp AS timeStamp, r.likeCount AS likeCount,
-			           r.amenity AS amenity, u.email AS userEmail
+			          u.email AS userEmail
 			    FROM Review r
 			    LEFT JOIN User u ON r.userId = u.id
 			    WHERE r.osmId = :osmId
@@ -36,7 +36,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 	 */
 	@Query("""
 			    SELECT r.id AS id, r.osmId AS osmId, r.comment AS comment, r.rating AS rating,
-			           r.amenity AS amenity, u.email AS userEmail, r.timeStamp AS timeStamp, r.likeCount AS likeCount
+			           u.email AS userEmail, r.timeStamp AS timeStamp, r.likeCount AS likeCount
 			    FROM Review r
 			    JOIN User u ON r.userId = u.id
 			    WHERE r.id = :reviewId
@@ -71,7 +71,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 	@Query("""
 			    SELECT r.id AS id, r.osmId AS osmId, r.comment AS comment,
 			           r.rating AS rating, r.timeStamp AS timeStamp, r.likeCount AS likeCount,
-			           r.amenity AS amenity, u.email AS userEmail
+			            u.email AS userEmail
 			    FROM Review r
 			    JOIN User u ON r.userId = u.id
 			    WHERE r.userId = :userId

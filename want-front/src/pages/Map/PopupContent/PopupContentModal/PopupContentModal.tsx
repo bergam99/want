@@ -5,14 +5,12 @@ import { useState } from "react";
 import { useReviewsStore } from "../../../../store/reviews";
 
 type PopupContentModalType = {
-  amenity: string;
   osmId: number;
   errorGetReviewByOsmId: string | null | undefined;
 };
 
 const PopupContentModal = ({
   errorGetReviewByOsmId,
-  amenity,
   osmId,
 }: PopupContentModalType) => {
   const { isWriteMode } = useReviewsStore();
@@ -30,7 +28,6 @@ const PopupContentModal = ({
         />
       ) : (
         <PopupReviewWriteMode
-          amenity={amenity}
           osmId={osmId}
           setSubmitReviewMsg={setSubmitReviewMsg}
         />

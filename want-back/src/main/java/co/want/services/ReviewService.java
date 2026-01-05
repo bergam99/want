@@ -43,7 +43,6 @@ public class ReviewService {
 		review.setUserId(input.userId());
 		review.setComment(input.comment());
 		review.setRating(input.rating());
-		review.setAmenity(input.amenity());
 		review.setTimeStamp(input.timeStamp());
 		review.setLikeCount(input.likeCount());
 
