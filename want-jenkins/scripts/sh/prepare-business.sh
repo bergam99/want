@@ -1,16 +1,13 @@
 #!/bin/bash
-set -ex
+set -e
 
-readonly SCRIPT=$0
 readonly ENV_FILE_PATH=$1
+readonly SKIP_TEST=$2
+readonly SONAR_TOKEN=$3
 
-echo "> Execution ${SCRIPT}"
-
-echo " > Preparing buisness artifacts with maven and java: "
-
-# application-prod.properties
 echo " > Copy tmp env file to ./want-back/src/main/resources/application-prod.properties"
-cp $ENV_FILE_PATH ./want-back/src/main/resources/application-prod.properties # copie source -> destination
+cp $ENV_FILE_PATH ./want-back/src/main/resources/application-prod.properties
 
+echo " > Execute goals (skip_test=${SKIP_TEST}) with maven:"
 mvn -v
-mvn -f ./want-back/pom.xml clean package
+mvn -Dmaven.test.skip=$SKIP_TEST -Dtest=* -f ./want-back/pom.xml package jacoco:report sonar:sonar -Dsonar.token=$SONAR_TOKEN
