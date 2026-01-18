@@ -13,4 +13,4 @@ echo " > Copy tmp env file to ./want-back/src/main/resources/application-prod.pr
 cp $ENV_FILE_PATH ./want-back/src/main/resources/application-prod.properties # copie source -> destination
 
 mvn -v
-mvn -Dmaven.test.skip=true -f ./want-back/pom.xml package
+mvn -f ./want-back/pom.xml clean package
