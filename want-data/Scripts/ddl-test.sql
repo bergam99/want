@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS want_test.t_review_likes CASCADE;
+DROP TABLE IF EXISTS want_test.t_reviews CASCADE;
+DROP TABLE IF EXISTS want_test.t_users CASCADE;
+
+CREATE TABLE want_test.t_users (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE want_test.t_reviews (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  osm_id BIGINT NOT NULL,
+  user_id INTEGER REFERENCES want_test.t_users(id) ON DELETE SET NULL,
+  comment VARCHAR(500) NOT NULL,
+  rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  time_stamp TIMESTAMP WITH TIME ZONE NOT NULL,
+  like_count INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE want_test.t_review_likes (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  review_id INTEGER NOT NULL REFERENCES want_test.t_reviews(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES want_test.t_users(id) ON DELETE SET NULL,
+  UNIQUE (review_id, user_id)
+);

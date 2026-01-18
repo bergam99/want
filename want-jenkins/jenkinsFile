@@ -33,15 +33,53 @@ pipeline {
                 }
             }
         }
-        stage("Prepare business artifacts") {
+        stage("Prepare integration tests") {
+            when{
+                expression { return !params.skip_test }
+            }
+            environment {
+                DB_ADMIN = credentials("banyan-db-admin-user")
+            }
             steps {
                 script {
                     utils.handleStage({
                         configFileProvider(
-                            [configFile(fileId: 'want-buisness-env', variable: 'ENV_FILE_PATH')]) {
-                                utils.bash('$SH_DIR/prepare-business.sh', env.ENV_FILE_PATH)
+                            [configFile(fileId: 'want-business-test-env', variable: 'TEST_ENV_FILE_PATH')]) {
+                                utils.bash('$SH_DIR/prepare-integration-tests.sh', env.TEST_ENV_FILE_PATH, env.DB_ADMIN_USR, env.DB_ADMIN_PSW, 'banyan', 'want_test')
                         }
                     }, { msg -> unstable(msg) })
+                }
+            }
+        }
+        stage("Prepare business artifacts") {
+            steps {
+                script {
+                    utils.handleStage({
+                               withSonarQubeEnv('SonarQubeServer') {
+                             withCredentials([string(credentialsId: 'sonar-server-user-token', variable: 'SONAR_TOKEN')]) {
+
+                        configFileProvider(
+                            [configFile(fileId: 'want-buisness-env', variable: 'ENV_FILE_PATH')]) {
+                                utils.bash('$SH_DIR/prepare-business.sh', env.ENV_FILE_PATH, "${params.skip_test}", env.SONAR_TOKEN)
+                        }
+                        }
+                    }
+                    }, { msg -> unstable(msg) })
+                }
+            }
+            post {
+                always {
+                    junit(
+                        allowEmptyResults: true,
+                        testResults: '**/surefire-reports/*.xml'
+                    )
+                    recordCoverage(
+                        tools: [[parser: 'JACOCO']],
+                        id: 'jacoco', name: 'JaCoCo Coverage',
+                        sourceDirectories: [[path:'want-back/src/main/java']],
+                        sourceCodeRetention: 'EVERY_BUILD',
+                        qualityGates: [[threshold: 80.0, metric: 'INSTRUCTION', baseline: 'PROJECT', unstable: true]]
+                    )
                 }
             }
         }
