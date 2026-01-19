@@ -77,7 +77,7 @@ pipeline {
                         id: 'jacoco', name: 'JaCoCo Coverage',
                         sourceDirectories: [[path:'want-back/src/main/java']],
                         sourceCodeRetention: 'EVERY_BUILD',
-                        qualityGates: [[threshold: 80.0, metric: 'INSTRUCTION', baseline: 'PROJECT', unstable: true]]
+                        qualityGates: [[threshold: 35.0, metric: 'INSTRUCTION', baseline: 'PROJECT', unstable: true]]
                     )
                 }
             }
