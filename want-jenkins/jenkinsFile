@@ -55,9 +55,8 @@ pipeline {
             steps {
                 script {
                     utils.handleStage({
-                               withSonarQubeEnv('SonarQubeServer') {
-                             withCredentials([string(credentialsId: 'sonar-server-user-token', variable: 'SONAR_TOKEN')]) {
-
+                            withSonarQubeEnv('SonarQubeServer') {
+                            withCredentials([string(credentialsId: 'sonar-server-user-token', variable: 'SONAR_TOKEN')]) {
                         configFileProvider(
                             [configFile(fileId: 'want-buisness-env', variable: 'ENV_FILE_PATH')]) {
                                 utils.bash('$SH_DIR/prepare-business.sh', env.ENV_FILE_PATH, "${params.skip_test}", env.SONAR_TOKEN)
