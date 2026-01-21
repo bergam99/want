@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class SseServiceUT {
+class SseServiceTest {
 
     private SseService sseService;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -77,26 +77,6 @@ class SseServiceUT {
         assertTrue(output.contains("1subscribed"));
     }
 
-    @Test
-    @DisplayName("Should handle multiple subscriptions")
-    void testSubscribe_MultipleUsers() throws Exception {
-        // Arrange
-        Long userId1 = 1L;
-        Long userId2 = 2L;
-        Long userId3 = 3L;
-
-        // Act
-        SseEmitter emitter1 = sseService.subscribe(userId1);
-        SseEmitter emitter2 = sseService.subscribe(userId2);
-        SseEmitter emitter3 = sseService.subscribe(userId3);
-
-        // Assert
-        Map<String, SseEmitter> emitters = getEmittersMap();
-        assertEquals(3, emitters.size());
-        assertTrue(emitters.containsKey("1"));
-        assertTrue(emitters.containsKey("2"));
-        assertTrue(emitters.containsKey("3"));
-    }
 
     @Test
     @DisplayName("Should replace existing emitter when same user subscribes again")

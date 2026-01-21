@@ -8,7 +8,7 @@ import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReviewUT {
+class ReviewTest {
 
     private Review review;
 

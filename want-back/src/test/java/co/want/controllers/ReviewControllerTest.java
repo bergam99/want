@@ -11,7 +11,7 @@ import co.want.BaseMvcTests;
 import co.want.dtos.ReviewCreate;
 
 @ActiveProfiles("test")
-public class ReviewControllerUT extends BaseMvcTests {
+public class ReviewControllerTest extends BaseMvcTests {
 	  @Test
 	  void createReview_ValidationFailure() throws Exception {
 	        ReviewCreate invalidInput = new ReviewCreate(3454L, 1L, "ex", 4, Instant.now(), 0);

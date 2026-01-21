@@ -23,7 +23,7 @@ import co.want.dtos.UserCreate;
 import co.want.entities.User;
 import co.want.repositories.UserRepository;
 
-public class UserServiceUT {
+public class UserServiceTest {
 
 	@Mock
 	private UserRepository userRepository;
