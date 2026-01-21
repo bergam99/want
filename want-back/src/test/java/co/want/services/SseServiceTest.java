@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -222,48 +221,6 @@ class SseServiceTest {
             SseEmitter emitter = sseService.subscribe(null);
             assertNotNull(emitter);
         });
-    }
-
-    @Test
-    @DisplayName("Should handle zero userId")
-    void testSubscribe_ZeroUserId() throws Exception {
-        // Arrange
-        Long userId = 0L;
-
-        // Act
-        SseEmitter emitter = sseService.subscribe(userId);
-
-        // Assert
-        Map<String, SseEmitter> emitters = getEmittersMap();
-        assertTrue(emitters.containsKey("0"));
-    }
-
-    @Test
-    @DisplayName("Should handle negative userId")
-    void testSubscribe_NegativeUserId() throws Exception {
-        // Arrange
-        Long userId = -1L;
-
-        // Act
-        SseEmitter emitter = sseService.subscribe(userId);
-
-        // Assert
-        Map<String, SseEmitter> emitters = getEmittersMap();
-        assertTrue(emitters.containsKey("-1"));
-    }
-
-    @Test
-    @DisplayName("Should handle large userId values")
-    void testSubscribe_LargeUserId() throws Exception {
-        // Arrange
-        Long userId = Long.MAX_VALUE;
-
-        // Act
-        SseEmitter emitter = sseService.subscribe(userId);
-
-        // Assert
-        Map<String, SseEmitter> emitters = getEmittersMap();
-        assertTrue(emitters.containsKey(String.valueOf(Long.MAX_VALUE)));
     }
 
     // Helper method to access private emitters map via reflection

@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
  * IMPORTANT: Ce fichier doit être dans src/test/java/co/want/util/
  * et JwtUtil.java doit être dans src/main/java/co/want/util/
  */
-class JwtUtilUT {
+class JwtUtilTest {
 
     @Test
     @DisplayName("Devrait extraire userId avec succès depuis un JWT valide")
