@@ -1,6 +1,5 @@
 #!/bin/bash
 set -ex
-trap 'echo "Error occurred on line $LINENO"; exit 1' ERR
 
 readonly SCRIPT=$0
 readonly ENV_FILE_PATH=$1

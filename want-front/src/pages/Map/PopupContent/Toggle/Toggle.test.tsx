@@ -34,8 +34,9 @@ describe("Toggle Component", () => {
     expect(menu).not.toHaveClass("isOpen");
 
     // Act, Assert
+    // mutation
     fireEvent.click(button);
-    expect(menu).toHaveClass("isOpen");
+    expect(menu).not.toHaveClass("isOpen");
 
     // Act, Assert
     fireEvent.click(button);
