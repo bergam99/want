@@ -21,9 +21,9 @@
     </springProfile>
 
 	  <springProfile name="test">
-        <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
-        <root level="INFO">
-            <appender-ref ref="FILE" />
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
         </root>
     </springProfile>
 </configuration>
