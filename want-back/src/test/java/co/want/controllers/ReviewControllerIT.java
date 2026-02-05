@@ -16,7 +16,7 @@ public class ReviewControllerIT extends BaseIT{
 	    
 	    api.perform(builder)
 	       .andExpect(status().isOk())
-	       .andExpect(jsonPath("$.length()", is(2)))
+	       .andExpect(jsonPath("$.length()", is(3)))
 	       
 	       .andExpect(jsonPath("$[0].userEmail", is("alice@example.com"))) 
 	       .andExpect(jsonPath("$[0].comment", is("content1")))           
