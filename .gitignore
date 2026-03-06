@@ -62,7 +62,8 @@ build/
 *.tmp
 *.swp
 
-.application-*.properties
+application-*.properties
+docker-compose.yml
 
 # Ignore test reports
 /test-output/
